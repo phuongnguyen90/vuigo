@@ -610,6 +610,15 @@ table.nice tbody tr.mine td{background:#fff9e8}
 .chip2.gold{background:#fff1c7;color:#8a5a00}.chip2.pur{background:#ece6ff;color:#5a3dc2}
 @media (max-width:1320px){.frow{grid-template-columns:48px 180px minmax(0,1fr) 110px 170px}.frow .tg .lb{display:none}}
 @media (max-width:1080px){.podwrap,.hgrid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
+/* Nhật ký ở tab Lịch sử: 2 dòng để luôn thấy đủ tên học sinh, tên bài và kết quả */
+#hTbl .frow{grid-template-columns:52px minmax(0,1fr) auto;grid-template-areas:"tm stu st" "tm ls tg";row-gap:2px;column-gap:12px;padding:9px 12px}
+#hTbl .frow .tm{grid-area:tm;align-self:center}#hTbl .frow .stu{grid-area:stu}#hTbl .frow .ls{grid-area:ls;padding-left:48px}
+#hTbl .frow .tg{grid-area:tg;overflow:visible}#hTbl .frow .st{grid-area:st}
+#hTbl .frow .stu b{white-space:normal;overflow:visible;font-size:15px}
+#hTbl .frow .ls b{font-size:13px;font-weight:600;color:var(--ink)}
+#hTbl .frow .tg .lb{display:inline}
+.rlist .stu b{white-space:normal;overflow:visible}
+@media (max-width:760px){#hTbl .frow{grid-template-columns:44px minmax(0,1fr);grid-template-areas:"tm stu" "tm st" "tm ls" "tm tg"}#hTbl .frow .ls{padding-left:0}#hTbl .frow .st,#hTbl .frow .tg{justify-content:flex-start}}
 @media (max-width:760px){.frow{grid-template-columns:44px minmax(0,1fr)}.frow .ls,.frow .tg,.frow .st{grid-column:2;grid-row:auto}.frow .tg,.frow .st{justify-content:flex-start}.frow .tg .lb{display:inline}}
 /* chống tràn bố cục */
 .basic-grid>*,.hgrid>*,.podwrap>*,.boardgrid>*,.layout>*,.race-grid>*,.bankgrid>*{min-width:0}
