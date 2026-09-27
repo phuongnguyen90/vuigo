@@ -122,6 +122,10 @@ main{padding:22px 0 60px}
 .cp-in{flex:1;min-height:0;width:100%;resize:none;font-family:"Noto Serif","Be Vietnam Pro",serif;font-size:19px;line-height:1.85;padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);background:#fff;outline:none;color:var(--ink)}
 .cp-in:focus{border-color:#8fc8f3;box-shadow:0 0 0 4px #e3f2fe}
 .cp-in.bad{border-color:var(--bad);box-shadow:0 0 0 4px var(--bad-soft)}
+@keyframes cpBlink{0%,100%{box-shadow:0 0 0 0 rgba(255,170,40,0);transform:scale(1)}50%{box-shadow:0 0 0 5px rgba(255,170,40,.8);transform:scale(1.03)}}
+.cp-attn{animation:cpBlink 1.1s ease-in-out 5;border-radius:10px}
+@media (prefers-reduced-motion:reduce){.cp-attn{animation:none;outline:3px solid #ffb74d}}
+#cpGr{flex:0 1 130px;min-width:110px}
 #afMode{flex-wrap:wrap}#afMode button{white-space:nowrap}
 .cp-mode{flex:none}
 .cp-stats{display:flex;flex-wrap:wrap}.cp-stats .stat{flex:1 1 130px}
@@ -210,6 +214,20 @@ label.lb{display:block;font-size:13px;font-weight:600;color:var(--muted);margin:
 .bc-sec .bcat.active{background:var(--g);border-color:var(--g);box-shadow:0 6px 14px rgba(61,155,224,.22)}
 .bc-sec.graded .bcat.active{box-shadow:0 6px 14px rgba(111,127,230,.3)}
 .bc-row{display:flex;flex-wrap:wrap;gap:8px}
+/* Kho văn bản: chủ đề dạng thẻ nhỏ gọn một dòng để thấy bài học ngay */
+#bankCats .bc-sec{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px 10px;padding:10px 12px;border-radius:16px}
+#bankCats .bc-h{margin:2px 0 0;flex:none}
+#bankCats .bc-row{flex:1;gap:6px;min-width:0}
+#bankCats .gpick{flex-basis:100%;margin-top:2px;padding-top:6px}
+#bankCats .tg-hint{align-self:center}
+#bankCats{gap:8px}
+@media (max-width:600px){#bankCats .bc-row{flex-basis:100%;flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}#bankCats .tg-hint{display:none}}
+#bankCats .bcat{display:inline-flex;align-items:center;gap:6px;flex:none;min-width:0;max-width:none;padding:5px 11px 5px 8px;border-radius:999px}
+#bankCats .bcat .ic{font-size:16px;line-height:1}
+#bankCats .bcat b{display:inline;margin:0;font-size:13px;white-space:nowrap}
+#bankCats .bcat small{font-size:11.5px;opacity:.8;white-space:nowrap}
+#bankCats .bcat small::before{content:"· "}
+#bankCats .bcat.empty small::before{content:""}
 .topics .lbl{font-size:13px;font-weight:700;color:var(--muted);margin-right:2px}
 .chip-t{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font-weight:600;font-size:13.5px;color:var(--pri-ink);transition:all .15s}
 .chip-t:hover{border-color:var(--pri2)}
@@ -217,6 +235,11 @@ label.lb{display:block;font-size:13px;font-weight:600;color:var(--muted);margin:
 .chip-t:disabled{opacity:.4;cursor:default}
 .chip-t small{opacity:.75;font-weight:500;margin-left:3px}
 
+.hist-layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;align-items:start}
+.hist-side{display:grid;gap:14px}
+.hist-side .hkpis{grid-template-columns:repeat(2,minmax(0,1fr));margin:0}
+.hist-side .hgrid{grid-template-columns:1fr;gap:14px;margin:0}
+@media (max-width:1080px){.hist-layout{grid-template-columns:1fr}}
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}
 .side{display:flex;flex-direction:column;gap:14px}
 
@@ -262,6 +285,23 @@ label.lb{display:block;font-size:13px;font-weight:600;color:var(--muted);margin:
 
 /* Keyboard */
 .kbwrap{margin-top:14px}
+#tab-practice .toolbar{margin-bottom:10px}
+#tab-practice .toolbar #lvSel{flex:0 1 210px;min-width:170px}
+#tab-practice #levels{display:none}
+#tab-practice .topics{margin:0 0 10px;gap:6px}
+#tab-practice .tgrp{padding:6px 9px;gap:5px;border-radius:14px}
+#tab-practice .chip-t{padding:4px 10px;font-size:13px}
+#tab-practice .tg-h{padding:3px 9px;font-size:12px}
+#tab-practice .toolbar{flex-wrap:wrap}
+#tab-practice .toolbar #textSel{flex:1 1 260px;min-width:220px}
+#tab-practice .seg button{padding:6px 10px}
+@media (max-width:720px){#tab-practice .tgrp{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}#tab-practice .tgrp .tg-hint{display:none}}
+.side-mode{display:flex;width:100%;margin-bottom:10px}.side-mode button{flex:1;padding:6px 4px!important}
+.side-stats{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:0}
+.side-stats .stat{padding:8px 10px}.side-stats .v{font-size:22px}
+.side-opts .opts{flex-direction:column;gap:8px;margin-top:0;padding-top:0;border-top:0}
+.side-opts .warn{margin-top:10px}
+#tab-practice .side .card h3{margin-bottom:10px}
 .kb{display:flex;flex-direction:column;gap:6px;align-items:center;user-select:none}
 .kr{display:flex;gap:6px}
 .k{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;font-weight:700;font-size:15px;border:1px solid rgba(0,0,0,.05);box-shadow:0 3px 0 rgba(28,53,80,.12);transition:transform .08s,box-shadow .08s;position:relative}
@@ -727,7 +767,7 @@ nav button .nbadge{display:inline-grid;place-items:center;min-width:18px;height:
       <button data-tab="bank" class="active" title="Kho văn bản"><i>📚</i><span>Kho văn bản</span></button>
       <button data-tab="basic" title="Làm quen"><i>🐣</i><span>Làm quen</span></button>
       <button data-tab="practice" title="Luyện gõ"><i>✍️</i><span>Luyện gõ</span></button>
-      <button data-tab="copy" title="Luyện viết: nhìn chép và thuộc chép cả bài"><i>📝</i><span>Luyện viết</span></button>
+      <button data-tab="copy" title="Luyện trí nhớ: nhìn chép và thuộc chép cả bài"><i>🧠</i><span>Luyện trí nhớ</span></button>
       <button data-tab="assign" title="Bài được giao"><i>📌</i><span>Bài được giao</span><b class="nbadge" id="asBadge" style="display:none"></b></button>
       <button data-tab="race" title="Đua tốc độ"><i>🏁</i><span>Đua tốc độ</span></button>
       <button data-tab="board" title="Bảng xếp hạng"><i>🏆</i><span>Bảng xếp hạng</span></button>
@@ -741,29 +781,18 @@ nav button .nbadge{display:inline-grid;place-items:center;min-width:18px;height:
 <main class="wrap">
 <!-- ============ LUYỆN GÕ ============ -->
 <section class="tab" id="tab-practice">
-  <div class="levels" id="levels"></div>
+  <div class="levels" id="levels" hidden></div>
   <div class="topics" id="topics"></div>
 
   <div class="layout">
     <div>
       <div class="card toolbar">
         <select class="in" id="textSel"></select>
+        <select class="in" id="lvSel" aria-label="Mức độ"></select>
         <button class="btn ghost" id="btnRandom">🎲 Ngẫu nhiên</button>
-        <div class="seg" id="modeSeg">
-          <button data-mode="0" class="active">Hết bài</button>
-          <button data-mode="60">1 phút</button>
-          <button data-mode="120">2 phút</button>
-          <button data-mode="180">3 phút</button>
-        </div>
       </div>
 
       <div class="card">
-        <div class="stats">
-          <div class="stat"><div class="v" id="stTime">0:00</div><div class="sk" id="stTimeK">Thời gian</div></div>
-          <div class="stat"><div class="v" id="stWpm">0</div><div class="sk">Tốc độ (từ/phút)</div></div>
-          <div class="stat"><div class="v" id="stAcc">100%</div><div class="sk">Độ chính xác</div></div>
-          <div class="stat"><div class="v" id="stProg">0/0</div><div class="sk">Số tiếng đã gõ</div></div>
-        </div>
         <div class="prog"><div id="progBar"></div></div>
         <div class="text-src text-prompt" id="textPrompt" style="display:none"></div>
         <div class="textbox" id="textBox"></div>
@@ -773,14 +802,6 @@ nav button .nbadge{display:inline-grid;place-items:center;min-width:18px;height:
           <button class="btn white" id="btnRestart" title="Làm lại">↻ Làm lại</button>
         </div>
         <div class="hint" id="hint"></div>
-        <div class="opts">
-          <label class="sw"><input type="checkbox" id="optBuiltin"><i></i>Bộ gõ Telex tích hợp</label>
-          <label class="sw"><input type="checkbox" id="optCase"><i></i>Bỏ qua chữ hoa/thường</label>
-          <label class="sw"><input type="checkbox" id="optHint"><i></i>Gợi ý cách gõ</label>
-          <label class="sw"><input type="checkbox" id="optKb"><i></i>Bàn phím ảo</label>
-          <label class="sw"><input type="checkbox" id="optSound"><i></i>Âm thanh</label>
-        </div>
-        <div class="warn" id="imeWarn">💡 Đang dùng bộ gõ tích hợp: hãy <b>tắt Unikey/EVKey</b> (chuyển sang chế độ E). Nếu muốn dùng Unikey, hãy tắt công tắc “Bộ gõ Telex tích hợp”.</div>
       </div>
 
       <div class="card kbwrap" id="kbWrap">
@@ -790,7 +811,29 @@ nav button .nbadge{display:inline-grid;place-items:center;min-width:18px;height:
     </div>
 
     <aside class="side">
-      <div style="display:none"><span id="meAv"></span><b id="meName"></b><span id="meClass"></span><button id="btnLogout"></button></div>
+      <div class="card side-now">
+        <h3>⏱️ Lượt gõ này</h3>
+        <div class="seg side-mode" id="modeSeg">
+          <button data-mode="0" class="active">Hết bài</button>
+          <button data-mode="60">1 phút</button>
+          <button data-mode="120">2 phút</button>
+          <button data-mode="180">3 phút</button>
+        </div>
+        <div class="stats side-stats">
+          <div class="stat"><div class="v" id="stTime">0:00</div><div class="sk" id="stTimeK">Thời gian</div></div>
+          <div class="stat"><div class="v" id="stWpm">0</div><div class="sk">Từ/phút</div></div>
+          <div class="stat"><div class="v" id="stAcc">100%</div><div class="sk">Chính xác</div></div>
+          <div class="stat"><div class="v" id="stProg">0/0</div><div class="sk">Tiếng đã gõ</div></div>
+        </div>
+      </div>
+      <div class="card side-badges">
+        <h3>🏅 Huy hiệu <span class="bcount" id="bCount">0</span></h3>
+        <div class="badges" id="badges"></div>
+      </div>
+      <div class="card">
+        <h3>🔥 Top 5 nhanh nhất</h3>
+        <ul class="mini" id="miniTop"></ul>
+      </div>
       <div class="card">
         <h3>📈 Tiến bộ của em</h3>
         <div class="kv">
@@ -801,26 +844,31 @@ nav button .nbadge{display:inline-grid;place-items:center;min-width:18px;height:
         <svg class="spark" id="spark" viewBox="0 0 260 74" preserveAspectRatio="none"></svg>
         <div class="muted" style="font-size:12px">Tốc độ 12 lượt gần nhất (từ/phút)</div>
       </div>
-      <div class="card">
-        <h3>🏅 Huy hiệu <span class="bcount" id="bCount">0</span></h3>
-        <div class="badges" id="badges"></div>
+      <div style="display:none"><span id="meAv"></span><b id="meName"></b><span id="meClass"></span><button id="btnLogout"></button></div>
+      <div class="card side-opts">
+        <h3>⚙️ Tùy chọn</h3>
+        <div class="opts">
+          <label class="sw"><input type="checkbox" id="optBuiltin"><i></i>Bộ gõ Telex tích hợp</label>
+          <label class="sw"><input type="checkbox" id="optCase"><i></i>Bỏ qua chữ hoa/thường</label>
+          <label class="sw"><input type="checkbox" id="optHint"><i></i>Gợi ý cách gõ</label>
+          <label class="sw"><input type="checkbox" id="optKb"><i></i>Bàn phím ảo</label>
+          <label class="sw"><input type="checkbox" id="optSound"><i></i>Âm thanh</label>
+        </div>
+        <div class="warn" id="imeWarn">💡 Đang dùng bộ gõ tích hợp: hãy <b>tắt Unikey/EVKey</b> (chuyển sang chế độ E). Nếu muốn dùng Unikey, hãy tắt công tắc “Bộ gõ Telex tích hợp”.</div>
       </div>
-      <div class="card">
-        <h3>🔥 Top 5 nhanh nhất</h3>
-        <ul class="mini" id="miniTop"></ul>
-      </div>
-    </aside>
+</aside>
   </div>
 </section>
 
 <!-- ============ LÀM QUEN ============ -->
 <section class="tab" id="tab-copy">
   <div class="card cp-bar">
-    <div class="seg cp-mode" id="cpMode" role="group" aria-label="Cách luyện viết">
+    <div class="seg cp-mode" id="cpMode" role="group" aria-label="Cách luyện trí nhớ">
       <button data-m="see" title="Bài mẫu hiện rõ, nhìn và chép lại">👀 Nhìn chép</button>
       <button data-m="mem" title="Học thuộc bài mẫu, rồi tự viết lại khi bài mẫu được che mờ">🧠 Thuộc chép</button>
     </div>
     <select class="in" id="cpCat" aria-label="Chủ đề"></select>
+    <select class="in" id="cpGr" aria-label="Lớp" style="display:none"></select>
     <select class="in" id="cpLv" aria-label="Mức độ">
       <option value="45">Đoạn ngắn &amp; dài (Mức 4–5)</option><option value="5">Chỉ đoạn dài (Mức 5)</option><option value="4">Chỉ đoạn ngắn (Mức 4)</option><option value="0">Tất cả mức từ 3</option>
     </select>
@@ -1007,7 +1055,7 @@ nav button .nbadge{display:inline-grid;place-items:center;min-width:18px;height:
 <section class="tab" id="tab-board">
   <div class="row" style="justify-content:space-between;margin-bottom:14px">
     <h2 class="sec" style="margin:0">🏆 Bảng xếp hạng &amp; vinh danh</h2>
-    <div class="seg bmode" id="bMode"><button data-v="main" class="active">✍️ Luyện gõ &amp; Đua</button><button data-v="basic">🐣 Làm quen</button><button data-v="write">📝 Luyện viết</button></div>
+    <div class="seg bmode" id="bMode"><button data-v="main" class="active">✍️ Luyện gõ &amp; Đua</button><button data-v="basic">🐣 Làm quen</button><button data-v="write">🧠 Luyện trí nhớ</button></div>
     <div class="row"><span class="src" id="boardSrc"></span><button class="btn ghost sm" id="btnRefresh">⟳ Tải lại</button></div>
   </div>
   <div class="kpis">
@@ -1051,28 +1099,12 @@ nav button .nbadge{display:inline-grid;place-items:center;min-width:18px;height:
   <div class="card filters hfilters">
     <input class="in" id="hSearch" placeholder="🔎 Tìm tên học sinh…">
     <select class="in" id="hClass"><option value="">Tất cả lớp</option></select>
-    <select class="in" id="hType"><option value="">Mọi hoạt động</option><option value="main">✍️ Luyện gõ &amp; Đua</option><option value="basic">🐣 Làm quen</option><option value="write">📝 Luyện viết</option></select>
+    <select class="in" id="hType"><option value="">Mọi hoạt động</option><option value="main">✍️ Luyện gõ &amp; Đua</option><option value="basic">🐣 Làm quen</option><option value="write">🧠 Luyện trí nhớ</option></select>
     <select class="in" id="hRange"><option value="0">Tất cả thời gian</option><option value="1">Hôm nay</option><option value="7" selected>7 ngày qua</option><option value="30">30 ngày qua</option></select>
   </div>
-  <div class="kpis">
-    <div class="kpi"><span class="ki">⌨️</span><b id="hsRuns">0</b><span>Lượt luyện tập</span></div>
-    <div class="kpi"><span class="ki">👧</span><b id="hsStu">0</b><span>Học sinh tham gia</span></div>
-    <div class="kpi"><span class="ki">⏱️</span><b id="hsMin">0</b><span>Tổng số phút gõ</span></div>
-    <div class="kpi"><span class="ki">☀️</span><b id="hsToday">0</b><span>Lượt hôm nay</span></div>
-  </div>
-  <div class="hgrid">
-    <div class="card">
-      <h3>💪 Chăm chỉ nhất <span class="muted" id="hdLbl" style="font-weight:500;font-size:13px"></span></h3>
-      <div class="muted" style="font-size:12.5px;margin-bottom:8px">Xếp theo số ngày có luyện tập, rồi đến số phút gõ. Bấm vào một bạn để xem riêng lịch sử.</div>
-      <ol class="rlist" id="hDiligent"></ol>
-    </div>
-    <div class="card">
-      <h3>📅 Hoạt động 14 ngày gần nhất</h3>
-      <svg id="hChart" viewBox="0 0 340 130" style="width:100%;height:auto"></svg>
-      <div class="hlegend"><span><i style="background:#3d9be0"></i>Hôm nay</span><span><i style="background:#9fd0f5"></i>Các ngày khác</span></div>
-    </div>
-  </div>
-  <div class="card">
+<div class="hist-layout">
+  <div class="hist-main">
+  <div class="card" style="margin:0">
     <h3>🗂️ Nhật ký luyện tập</h3>
     <div class="feed" id="hTbl"></div>
     <div class="row" style="justify-content:space-between;margin-top:12px">
@@ -1080,6 +1112,28 @@ nav button .nbadge{display:inline-grid;place-items:center;min-width:18px;height:
       <div class="row"><button class="btn white sm" id="hPrev">‹ Trước</button><span class="muted" id="hPage"></span><button class="btn white sm" id="hNext">Sau ›</button></div>
     </div>
   </div>
+  </div>
+  <aside class="hist-side">
+  <div class="kpis hkpis">
+    <div class="kpi"><span class="ki">⌨️</span><b id="hsRuns">0</b><span>Lượt luyện tập</span></div>
+    <div class="kpi"><span class="ki">👧</span><b id="hsStu">0</b><span>Học sinh tham gia</span></div>
+    <div class="kpi"><span class="ki">⏱️</span><b id="hsMin">0</b><span>Tổng số phút gõ</span></div>
+    <div class="kpi"><span class="ki">☀️</span><b id="hsToday">0</b><span>Lượt hôm nay</span></div>
+  </div>
+  <div class="hgrid">
+    <div class="card">
+      <h3>📅 Hoạt động 14 ngày gần nhất</h3>
+      <svg id="hChart" viewBox="0 0 340 130" style="width:100%;height:auto"></svg>
+      <div class="hlegend"><span><i style="background:#3d9be0"></i>Hôm nay</span><span><i style="background:#9fd0f5"></i>Các ngày khác</span></div>
+    </div>
+    <div class="card">
+      <h3>💪 Chăm chỉ nhất <span class="muted" id="hdLbl" style="font-weight:500;font-size:13px"></span></h3>
+      <div class="muted" style="font-size:12.5px;margin-bottom:8px">Xếp theo số ngày có luyện tập, rồi đến số phút gõ. Bấm vào một bạn để xem riêng lịch sử.</div>
+      <ol class="rlist" id="hDiligent"></ol>
+    </div>
+  </div>
+  </aside>
+</div>
 </section>
 
 <!-- ============ KHO VĂN BẢN ============ -->
@@ -1165,7 +1219,7 @@ nav button .nbadge{display:inline-grid;place-items:center;min-width:18px;height:
       <div class="steps one">
       <div><b>1</b><span><strong>Nhập tên:</strong> bấm ô nhấp nháy ở góc trên bên phải, điền họ tên, lớp và chọn một biểu tượng. Lần sau chọn đúng như cũ để giữ thành tích.</span></div>
       <div><b>2</b><span><strong>Xem bài được giao:</strong> tab 📌 có số đỏ là còn bài cô giao chưa làm. Bấm ✍️ Luyện hoặc 🏁 Đua ngay trên từng bài.</span></div>
-      <div><b>3</b><span><strong>Chọn bài và luyện:</strong> ở 📚 Kho văn bản (trang mở đầu) chọn chủ đề, bấm ✍️ Luyện bài này hoặc 🏁 Đua bài này; hoặc vào tab Luyện gõ chọn mức độ (hoặc 🌈 Tất cả), chủ đề và lớp, rồi gõ từng chữ – tiếng Việt hay tiếng Anh đều được. Bài văn, bài essay dài thì dùng tab 📝 Luyện viết để nhìn chép hoặc học thuộc rồi viết lại cả bài. Gõ đúng chữ cuối là có kết quả ngay.</span></div>
+      <div><b>3</b><span><strong>Chọn bài và luyện:</strong> ở 📚 Kho văn bản (trang mở đầu) chọn chủ đề, bấm ✍️ Luyện gõ, 🏁 Đua hoặc 🧠 Thử thách trí nhớ ngay trên thẻ bài; hoặc vào tab Luyện gõ chọn mức độ (hoặc 🌈 Tất cả), chủ đề và lớp, rồi gõ từng chữ – tiếng Việt hay tiếng Anh đều được. Muốn học thuộc (động từ bất quy tắc, essay, kiến thức khoa học, bài văn) thì dùng tab 🧠 Luyện trí nhớ: đọc thuộc rồi tự viết lại cả bài. Gõ đúng chữ cuối là có kết quả ngay.</span></div>
       <div><b>4</b><span><strong>Thử thách:</strong> đua một mình hoặc đua cùng các bạn, xem 🏆 Bảng xếp hạng và sưu tầm huy hiệu.</span></div></div>
     </div>
     <div class="card">
@@ -1185,22 +1239,22 @@ nav button .nbadge{display:inline-grid;place-items:center;min-width:18px;height:
   <div class="card" style="margin-bottom:16px">
     <h3>🧭 Các khu vực của trang</h3>
     <div class="tabsinfo">
-      <div><span>📚</span><b>Kho văn bản</b><p>Trang mở đầu. Xem mọi bài theo chủ đề, lớp và mức độ (Mức 1–2 là các bài của tab Làm quen, Mức 3–5 luyện ở tab Luyện gõ; số bài mỗi mức tự cập nhật khi kho có thêm bài), chọn số bài mỗi trang. Mở trang là thấy sẵn chủ đề Ca dao, tục ngữ, lời hay ý đẹp; các chủ đề ngắn, hay xếp trước. Mỗi bài có nút <b>✍️ Luyện bài này</b>, <b>🏁 Đua bài này</b> và (từ Mức 3) <b>📝 Luyện viết</b>.</p></div>
+      <div><span>📚</span><b>Kho văn bản</b><p>Trang mở đầu. Xem mọi bài theo chủ đề, lớp và mức độ (Mức 1–2 là các bài của tab Làm quen, Mức 3–5 luyện ở tab Luyện gõ; số bài mỗi mức tự cập nhật khi kho có thêm bài), chọn số bài mỗi trang. Mở trang là thấy sẵn chủ đề Ca dao, tục ngữ, lời hay ý đẹp; các chủ đề ngắn, hay xếp trước. Chủ đề hiện thành hàng thẻ nhỏ gọn để thấy bài ngay. Mỗi bài có nút <b>✍️ Luyện gõ</b>, <b>🏁 Đua</b> và (từ Mức 3) <b>🧠 Thử thách trí nhớ</b> (mở tab Luyện trí nhớ).</p></div>
       <div><span>🐣</span><b>Làm quen</b><p>Bài cho người mới: đặt tay trên bàn phím, gõ số và số điện thoại khẩn cấp, dấu thanh, chữ có mũ và móc, từ ghép có giải nghĩa, dấu câu. Phím cần bấm hiện sáng trên bàn phím ảo; chọn Hiện rõ, Mờ hoặc Ẩn tùy mức đã thuộc.</p></div>
-      <div><span>✍️</span><b>Luyện gõ</b><p>Chủ đề chia hai nhóm: <b>🌍 Chung cho mọi lớp</b> (ca dao tục ngữ, tri thức ngữ văn, khoa học thường thức, Thế giới kỳ thú, đoạn văn hay…) và <b>🎓 Theo từng lớp</b> (Khoa học tự nhiên, ví dụ Sinh học, bài văn hay…) có hàng chọn lớp, tự chọn sẵn lớp của em. Gõ hết bài hoặc giới hạn 1, 2, 3 phút.</p></div>
-      <div><span>📝</span><b>Luyện viết</b><p>Kỹ năng nâng cao cho bài văn, bài essay dài. <b>👀 Nhìn chép:</b> bài mẫu hiện rõ một bên, khung gõ rộng bên kia giữ nguyên các đoạn đã chép; chữ đúng hiện xanh, sai hiện đỏ. <b>🧠 Thuộc chép:</b> học thuộc bài mẫu, bài mẫu bị che mờ rồi em tự viết lại; mỗi lần “👁 Xem lại bài” đều được đếm. Cách tính điểm xem ở khung bên dưới.</p></div>
-      <div><span>📌</span><b>Bài được giao</b><p>Danh sách bài cô giao cho lớp hoặc cho riêng em, kèm hạn, lời nhắn và dấu ✅ bài đã làm. Bài chỉ tính là xong khi em gõ hết bài sau thời điểm được giao; bài giao dạng Nhìn chép hoặc Thuộc chép có nút mở thẳng tab 📝 Luyện viết và phải viết hết bài mới tính xong.</p></div>
+      <div><span>✍️</span><b>Luyện gõ</b><p>Chủ đề chia hai nhóm: <b>🌍 Chung cho mọi lớp</b> (ca dao tục ngữ, tri thức ngữ văn, khoa học thường thức, Thế giới kỳ thú, đoạn văn hay…) và <b>🎓 Theo từng lớp</b> (Khoa học tự nhiên, ví dụ Sinh học, bài văn hay…) có hàng chọn lớp, tự chọn sẵn lớp của em. Mức độ chọn ở ô cạnh tên bài (chọn Mức 1–2 là sang tab Làm quen). Cột bên phải: chế độ Hết bài hoặc 1, 2, 3 phút và kết quả lượt gõ, ngay dưới là 🏅 Huy hiệu để thi đua, rồi Top 5, Tiến bộ và Tùy chọn (bộ gõ, gợi ý, bàn phím ảo, âm thanh); khung gõ và bàn phím luôn ở ngay trước mắt.</p></div>
+      <div><span>🧠</span><b>Luyện trí nhớ</b><p>Kỹ năng nâng cao: học thuộc từ vựng tiếng Anh, động từ bất quy tắc, essay, kiến thức khoa học, bài văn. Mở tab là vào ngay 🧠 Thuộc chép với bài Khoa học tự nhiên lớp 7 (chọn lớp khác ở ô Lớp); chuyển sang 👀 Nhìn chép thì bài tiếng Anh và bài dài hiện trước. Nút cần bấm và lời hướng dẫn nhấp nháy vài giây khi vừa mở để em thấy ngay. <b>👀 Nhìn chép:</b> bài mẫu hiện rõ một bên, khung gõ rộng bên kia giữ nguyên các đoạn đã chép; chữ đúng hiện xanh, sai hiện đỏ. <b>🧠 Thuộc chép:</b> học thuộc bài mẫu, bài mẫu bị che mờ rồi em tự viết lại; mỗi lần “👁 Xem lại bài” đều được đếm. Cách tính điểm xem ở khung bên dưới.</p></div>
+      <div><span>📌</span><b>Bài được giao</b><p>Danh sách bài cô giao cho lớp hoặc cho riêng em, kèm hạn, lời nhắn và dấu ✅ bài đã làm. Bài chỉ tính là xong khi em gõ hết bài sau thời điểm được giao; bài giao dạng Nhìn chép hoặc Thuộc chép có nút mở thẳng tab 🧠 Luyện trí nhớ và phải viết hết bài mới tính xong.</p></div>
       <div><span>🏁</span><b>Đua tốc độ</b><p><b>🏎️ Đua một mình:</b> gõ đúng để tên lửa tiến lên, nhặt quà, đạt danh hiệu Đồng, Bạc, Vàng, Kim cương. <b>👥 Đua cùng các bạn:</b> vào phòng đua chung, thấy làn của từng bạn và xếp hạng theo thứ tự về đích. Lịch sử đua nhóm của lớp hiện ở cuối trang.</p></div>
-      <div><span>🏆</span><b>Bảng xếp hạng</b><p>Ba bảng riêng: <b>✍️ Luyện gõ &amp; Đua</b> xếp theo tốc độ (chỉ tính lượt chính xác từ 80%), <b>🐣 Làm quen</b> xếp theo số sao, và <b>📝 Luyện viết</b> xếp theo điểm Luyện viết kèm số bài thuộc lòng, với các danh hiệu Vua luyện viết, Trí nhớ siêu phàm, Kim cương trí nhớ.</p></div>
-      <div><span>📜</span><b>Lịch sử</b><p>Toàn bộ lượt luyện tập, lọc theo tên, lớp, loại hoạt động (Luyện gõ &amp; Đua, Làm quen, Luyện viết) và thời gian; bảng “Chăm chỉ nhất”, biểu đồ 14 ngày và nút xuất CSV.</p></div>
+      <div><span>🏆</span><b>Bảng xếp hạng</b><p>Ba bảng riêng: <b>✍️ Luyện gõ &amp; Đua</b> xếp theo tốc độ (chỉ tính lượt chính xác từ 80%), <b>🐣 Làm quen</b> xếp theo số sao, và <b>🧠 Luyện trí nhớ</b> xếp theo điểm trí nhớ kèm số bài thuộc lòng, với các danh hiệu Vua trí nhớ, Trí nhớ siêu phàm, Kim cương trí nhớ.</p></div>
+      <div><span>📜</span><b>Lịch sử</b><p>Nhật ký luyện tập đầy đủ của các bạn hiện ngay bên trái; cột phải là số liệu tổng, biểu đồ hoạt động 14 ngày và bảng “Chăm chỉ nhất”. Lọc theo tên, lớp, loại hoạt động (Luyện gõ &amp; Đua, Làm quen, Luyện trí nhớ) và thời gian; có nút xuất CSV.</p></div>
     </div>
   </div>
   <div class="card" style="margin-bottom:16px">
-    <h3>📝 Luyện viết: sao, điểm và danh hiệu trí nhớ</h3>
+    <h3>🧠 Luyện trí nhớ: sao, điểm và danh hiệu trí nhớ</h3>
     <div class="wr-guide">
-      <div class="wg-txt"><p><b>Cách luyện:</b> chọn 👀 Nhìn chép hoặc 🧠 Thuộc chép ở đầu tab. Thuộc chép: đọc thuộc, bấm “Đã thuộc, bắt đầu viết”, bài mẫu bị che mờ; quên thì bấm “👁 Xem lại bài”, gõ tiếp là bài tự che lại. Gõ phím Cách giữa các chữ, Enter khi sang đoạn mới; không dán được văn bản. Viết xong chữ cuối là tự chấm, hoặc bấm ✅ Nộp bài; bảng kết quả liệt kê các chữ cần xem lại.</p>
+      <div class="wg-txt"><p><b>Cách luyện:</b> mở tab là vào sẵn 🧠 Thuộc chép (nút 🧠 Thử thách trí nhớ trên thẻ bài ở Kho cũng vậy); muốn nhìn bài mẫu mà chép thì chọn 👀 Nhìn chép ở đầu tab. Thuộc chép: đọc thuộc, bấm “Đã thuộc, bắt đầu viết”, bài mẫu bị che mờ; quên thì bấm “👁 Xem lại bài”, gõ tiếp là bài tự che lại. Gõ phím Cách giữa các chữ, Enter khi sang đoạn mới; không dán được văn bản. Viết xong chữ cuối là tự chấm, hoặc bấm ✅ Nộp bài; bảng kết quả liệt kê các chữ cần xem lại.</p>
       <p><b>Sao:</b> 3 sao khi viết hết bài, chính xác từ 95% và (Nhìn chép) đạt tốc độ mục tiêu hoặc (Thuộc chép) không xem lại lần nào. Nộp khi chưa viết chữ nào thì không được tính.</p>
-      <p><b>Điểm Luyện viết:</b> bài viết hết, chính xác từ 80%, được số điểm bằng số tiếng viết đúng; mỗi bài chỉ tính lượt tốt nhất. Chính xác từ 95% thưởng thêm ×1,2. Thuộc lòng không xem lại được bắn pháo hoa mừng và mở khóa nhóm huy hiệu 📝 Luyện viết.</p></div>
+      <p><b>Điểm trí nhớ:</b> bài viết hết, chính xác từ 80%, được số điểm bằng số tiếng viết đúng; mỗi bài chỉ tính lượt tốt nhất. Chính xác từ 95% thưởng thêm ×1,2. Thuộc lòng không xem lại được bắn pháo hoa mừng và mở khóa nhóm huy hiệu 🧠 Luyện trí nhớ.</p></div>
       <div class="wg-tiers">
         <div class="t-kc"><span>💎</span><b>Kim cương ×4</b><small>Không xem lại, chính xác từ 98%</small></div>
         <div class="t-vg"><span>🥇</span><b>Vàng ×3</b><small>Không xem lại, chính xác từ 90%</small></div>
@@ -1235,7 +1289,7 @@ nav button .nbadge{display:inline-grid;place-items:center;min-width:18px;height:
       <b>Chế độ giáo viên:</b> bấm “🔐 Chế độ giáo viên” (ở Kho văn bản) hoặc “Vào chế độ giáo viên” (cuối tab Bài được giao) và nhập mã. Bấm “🔒 Thoát chế độ giáo viên” khi xong để học sinh không dùng nhầm.<br>
       <b>Quản lý kho:</b> thêm, sửa, xóa bài hoặc xóa cả một chủ đề; mọi thay đổi tự đồng bộ vào cơ sở dữ liệu. <b>Nhập nhanh:</b> dòng đầu là tiêu đề, các dòng sau là nội dung, các bài cách nhau một dòng trống. <b>Nhập JSON:</b> cho bộ học liệu soạn sẵn; bài trùng mã được cập nhật chứ không nhân đôi. <b>Ghi nguồn:</b> dòng bắt đầu bằng <em class="kw">Nguồn:</em> / <em class="kw">Source:</em> (trích nguồn) hoặc <em class="kw">Prompt:</em> / <em class="kw">Đề bài:</em> chỉ để hiển thị, học sinh không phải gõ.<br>
       <b>Chủ đề và lớp:</b> trong ô Chủ đề chọn “➕ Chủ đề mới…” để tạo chủ đề, ví dụ “Tiếng Anh” (tự có biểu tượng 🔤) cho bài gõ tiếng Anh. Chọn ô <b>Lớp</b> thì tiêu đề tự thêm “Lớp N · ” và chủ đề tự vào nhóm “Theo từng lớp”. Mức độ để “Tự động theo độ dài bài”.<br>
-      <b>Giao bài:</b> tab 📌 → “➕ Giao bài mới”: chọn bài, chọn cả lớp và/hoặc từng em, hình thức Luyện gõ, Đua, Cả hai, 📝 Nhìn chép hoặc 🧠 Thuộc chép (giao bài luyện viết), hạn và lời nhắn. Trong Kho, nút “📌 Giao” giao nhanh một bài. Tiến độ từng em tự cập nhật theo kết quả gõ.<br>
+      <b>Giao bài:</b> tab 📌 → “➕ Giao bài mới”: chọn bài, chọn cả lớp và/hoặc từng em, hình thức Luyện gõ, Đua, Cả hai, 📝 Nhìn chép hoặc 🧠 Thuộc chép (giao bài luyện trí nhớ), hạn và lời nhắn. Trong Kho, nút “📌 Giao” giao nhanh một bài. Tiến độ từng em tự cập nhật theo kết quả gõ.<br>
       <b>Đua cả lớp:</b> trong Kho bấm “👥 Phòng đua” ở một bài, hoặc tạo phòng ở tab Đua với tùy chọn “Giáo viên chỉ theo dõi” rồi chiếu màn hình lên bảng. Giáo viên cũng có thể nhập mã phòng của học sinh để theo dõi và bấm Xuất phát. Mỗi phòng nên tối đa khoảng 30 em.<br>
       <b>Theo dõi học sinh:</b> tab 📜 Lịch sử lọc theo lớp, tên, thời gian và xuất CSV; tab 🏆 cho thấy tốc độ và huy hiệu của từng em; lịch sử đua nhóm từng lớp ở cuối tab 🏁.<br>
       <b>Phụ huynh:</b> có thể xem 📚 Kho văn bản để biết bài con được luyện và 📜 Lịch sử để theo dõi mức độ chăm chỉ của con.
@@ -1565,8 +1619,8 @@ function ukView(el, eff){
   ov.innerHTML = esc(eff) + '<i class="uk-caret"></i>';
   if (!ukView.told){ ukView.told = true; toastHTML('⌨️ Máy đang bật <b>Unikey/EVKey</b> — trang vẫn tự hiểu đúng chữ tiếng Anh. Để gõ mượt nhất, hãy chuyển sang chế độ <b>E</b>.'); }
 }
-const inVal = () => isEnWords(S.words) ? enFix(input.value, (S.words[S.idx]||{}).w) : input.value;
-const rcVal = () => isEnWords(R.words) ? enFix(rcIn.value, R.words[R.idx]) : rcIn.value;
+const inVal = () => enFix(input.value, (S.words[S.idx]||{}).w);   /* chữ tiếng Anh (không dấu) luôn được hiểu đúng dù máy bật Unikey */
+const rcVal = () => enFix(rcIn.value, R.words[R.idx]);
 function tx(raw, tgt, en){
   if (en) return raw;
   if (tgt && PLAIN_RE.test(tgt) && tgt.toLowerCase().startsWith(String(raw).toLowerCase())) return raw;
@@ -1606,7 +1660,7 @@ function showTab(id){
   if (id === 'practice') setTimeout(()=>$('#typeIn').focus(), 50);
   if (id === 'copy'){ cpFill(); setTimeout(() => $('#cpIn').focus(), 50); }
 }
-$$('#nav button').forEach(b => b.onclick = () => showTab(b.dataset.tab));
+$$('#nav button').forEach(b => b.onclick = () => { if (b.dataset.tab === 'copy') cpDefaults(); showTab(b.dataset.tab); });
 
 /* ======================= HỌC SINH ======================= */
 function renderStudent(){
@@ -1667,6 +1721,15 @@ function renderLevels(){
       <span>${l.id ? cnt(l.id) : pool.filter(t => +t.level >= 3).length} bài</span>
     </button>`).join('');
   $$('.lv[data-lv]').forEach(b => b.onclick = () => setLevel(+b.dataset.lv));
+  /* Ô chọn mức độ gọn trong thanh công cụ (thay cho hàng thẻ mức độ) */
+  const ls = $('#lvSel');
+  if (ls){
+    ls.innerHTML = `<option value="0">🌈 Tất cả mức độ (${pool.filter(t => +t.level >= 3).length})</option>` +
+      ids.map(n => { const l = LEVELS.find(x => x.id === n); return `<option value="${n}">${l ? l.icon + ' ' : ''}Mức ${n}${l ? ' · ' + esc(l.name) : ''} (${cnt(n)})</option>`; }).join('') +
+      `<option value="basic">🐣 Mức 1–2 · Làm quen (${nBasic}) →</option>`;
+    ls.value = String(S.level || 0);
+    ls.onchange = () => { if (ls.value === 'basic'){ ls.value = String(S.level || 0); showTab('basic'); } else setLevel(+ls.value); };
+  }
   $$('.lv[data-go]').forEach(b => b.onclick = () => showTab('basic'));
 }
 const gradeOf = t => (String(t.title||'').match(/^Lớp (\d+)/)||[])[1] || '';
@@ -1677,7 +1740,7 @@ const myGrade = () => (String(student && student.cls || '').match(/\d+/) || ['']
 const pickGrade = gs => gs.includes(myGrade()) ? myGrade() : '';
 const gradeRange = gs => gs.length ? (gs.length === 1 ? 'Lớp ' + gs[0] : 'Lớp ' + gs[0] + '–' + gs[gs.length-1]) : '';
 /* Thứ tự chủ đề: bài ngắn mà hay lên trước để lần đầu vào trang các em thích gõ ngay; chủ đề mới xếp trước Luyện phím cơ bản (luôn cuối) */
-const CAT_ORDER = ['Ca dao, tục ngữ, lời hay ý đẹp','Lời hay ý đẹp','Thế giới kỳ thú','Khoa học thường thức','Tri thức ngữ văn','Đoạn văn hay','Kiến thức sơ cấp cứu','Essay tiếng Anh','Khoa học tự nhiên','Ví dụ Khoa học tự nhiên','Bài văn hay'];
+const CAT_ORDER = ['Ca dao, tục ngữ, lời hay ý đẹp','Lời hay ý đẹp','Thế giới kỳ thú','Khoa học thường thức','Tri thức ngữ văn','Đoạn văn hay','Kiến thức sơ cấp cứu','Essay tiếng Anh','Động từ bất quy tắc','Khoa học tự nhiên','Ví dụ Khoa học tự nhiên','Bài văn hay'];
 function allCats(){
   const all = [...new Set([...CATS, ...texts.map(t => t.category).filter(Boolean)])];
   const rank = c => c === 'Luyện phím cơ bản' ? 1e4 : CAT_ORDER.includes(c) ? CAT_ORDER.indexOf(c) : 500 + all.indexOf(c);
@@ -2111,7 +2174,7 @@ $('#rNext').onclick = () => { if (RES_CTX === 'copy'){ $('#resModal').classList.
   else if (list[0]) loadText(list[0].id);
   input.focus();
 };
-$('#rBoard').onclick = () => { $('#resModal').classList.remove('show'); showTab('board'); };
+$('#rBoard').onclick = () => { $('#resModal').classList.remove('show'); const m = RES_CTX === 'copy' ? 'write' : 'main'; showTab('board'); const b = $(`#bMode [data-v="${m}"]`); if (b && BMODE !== m) b.click(); };   /* Luyện trí nhớ xong → bảng xếp hạng Luyện trí nhớ */
 
 /* ======================= DANH TÍNH HỌC SINH ======================= */
 const ICONS = {
@@ -2185,7 +2248,7 @@ const BADGE_GROUPS = [
   {id:'ac', name:'🎯 Chính xác'},
   {id:'ch', name:'🔥 Chăm chỉ'},
   {id:'lv', name:'🧗 Thử thách'},
-  {id:'wr', name:'📝 Luyện viết', star:true}
+  {id:'wr', name:'🧠 Luyện trí nhớ', star:true}
 ];
 const BADGES = [
   {g:'bq', i:'🐣', n:'Bước đầu tiên', d:'Hoàn thành 1 bài Làm quen (từ 2 sao)', p:h => [basicStats(h).done, 1]},
@@ -2218,12 +2281,12 @@ const BADGES = [
   {g:'lv', i:'👑', n:'Chinh phục mức 5', d:'Học 5 bài ở mức 5', p:h => [h.filter(r => r.level >= 5 && isLearned(r)).length, 5]},
   {g:'lv', i:'🏆', n:'Tay đua vàng', d:'Đạt danh hiệu Vàng hoặc Kim cương trên đường đua', p:h => [h.filter(r => /Đua – (Vàng|Kim cương)/.test(r.mode||'')).length, 1]},
   {g:'lv', i:'🎁', n:'Thợ săn quà', d:'Nhặt tổng cộng 100 điểm quà trên đường đua', p:h => [h.reduce((a,r) => a + (+((String(r.mode||'').match(/(\d+) điểm quà/)||[])[1]||0)), 0), 100]},
-  {g:'wr', i:'✒️', n:'Nét chữ nết người', d:'Viết hết 1 bài ở tab Luyện viết (chính xác từ 80%)', p:h => [writeStats(h).done, 1]},
+  {g:'wr', i:'✒️', n:'Nét chữ nết người', d:'Viết hết 1 bài ở tab Luyện trí nhớ (chính xác từ 80%)', p:h => [writeStats(h).done, 1]},
   {g:'wr', i:'🧠', n:'Thuộc lòng đầu tiên', d:'Thuộc chép hết 1 bài không xem lại lần nào (chính xác từ 90%)', p:h => [writeStats(h).mem, 1]},
-  {g:'wr', i:'📜', n:'Nhà văn nhí', d:'Viết hết 20 bài khác nhau ở tab Luyện viết', p:h => [writeStats(h).done, 20]},
+  {g:'wr', i:'📜', n:'Nhà văn nhí', d:'Viết hết 20 bài khác nhau ở tab Luyện trí nhớ', p:h => [writeStats(h).done, 20]},
   {g:'wr', i:'🦉', n:'Trí nhớ siêu phàm', d:'Thuộc lòng 10 bài khác nhau (không xem lại)', p:h => [writeStats(h).mem, 10]},
   {g:'wr', i:'💎', n:'Trí nhớ kim cương', d:'3 lượt Thuộc chép không xem lại, chính xác từ 98%', p:h => [writeStats(h).kc, 3]},
-  {g:'wr', i:'🏆', n:'Vua luyện viết', d:'Đạt 2000 điểm Luyện viết', p:h => [writeStats(h).pts, 2000]}
+  {g:'wr', i:'🏆', n:'Vua trí nhớ', d:'Đạt 2000 điểm trí nhớ', p:h => [writeStats(h).pts, 2000]}
 ];
 const earnedSet = h => new Set(BADGES.filter(b => { const [c,t] = b.p(h); return c >= t; }).map(b => b.n));
 function renderBadgeList(){
@@ -2383,7 +2446,7 @@ function renderBoard(){
 
 function setBoardLabels(basic){
   const L = basic === 'write'
-    ? [['Học sinh luyện viết','Lượt luyện viết','🧠','Bài thuộc lòng (tổng)','🏆','Điểm Luyện viết cao nhất'],'🏆 Top 10 luyện viết','Điểm = số tiếng viết đúng của bài tốt nhất mỗi bài; Thuộc chép không xem lại được nhân ×3 (Kim cương ×4), chính xác từ 95% thưởng thêm ×1.2.','📋 Luyện viết của từng học sinh']
+    ? [['Học sinh luyện trí nhớ','Lượt luyện trí nhớ','🧠','Bài thuộc lòng (tổng)','🏆','Điểm trí nhớ cao nhất'],'🏆 Top 10 luyện trí nhớ','Điểm = số tiếng viết đúng của bài tốt nhất mỗi bài; Thuộc chép không xem lại được nhân ×3 (Kim cương ×4), chính xác từ 95% thưởng thêm ×1.2.','📋 Luyện trí nhớ của từng học sinh']
     : basic
     ? [['Em nhỏ đang làm quen','Lượt làm quen','⭐','Tổng số sao đạt được','🎓','Bài đã hoàn thành (tổng)'],'🌟 Top 10 chăm ngoan làm quen','Xếp theo số sao sưu tầm ở tab Làm quen (mỗi bài tối đa 3 sao), rồi đến số bài hoàn thành.','📋 Tiến độ làm quen của từng em']
     : [['Học sinh','Lượt luyện tập','📈','Tốc độ trung bình (từ/phút)','⚡','Kỷ lục tốc độ (từ/phút)'],'🥇 Top 10 nhanh nhất','Tính theo lượt tốt nhất có độ chính xác từ 80% trở lên.','📋 Thành tích từng học sinh'];
@@ -2407,7 +2470,7 @@ function renderBoardWrite(cls, q, lvF){
   $('#sumAvg').textContent = agg.reduce((a,x) => a + x.mem, 0); $('#sumMax').textContent = agg.length ? Math.max(...agg.map(a => a.pts)) : 0;
   const pick = (f, cond) => agg.filter(cond).sort((x,y) => f(y) - f(x))[0];
   const hon = [
-    ['h-speed','🏆 Vua luyện viết', pick(a => a.pts, a => a.pts > 0), a => `${a.pts} điểm`],
+    ['h-speed','🏆 Vua trí nhớ', pick(a => a.pts, a => a.pts > 0), a => `${a.pts} điểm`],
     ['h-know','🧠 Trí nhớ siêu phàm', pick(a => a.mem*1000 + a.pts, a => a.mem > 0), a => `${a.mem} bài thuộc lòng`],
     ['h-badge','💎 Kim cương trí nhớ', pick(a => a.kc*1000 + a.pts, a => a.kc > 0), a => `${a.kc} lượt Kim cương`],
     ['h-dil','📜 Viết nhiều nhất', pick(a => a.done*1000 + a.n, a => a.done > 0), a => `${a.done} bài đã viết`],
@@ -2420,7 +2483,7 @@ function renderBoardWrite(cls, q, lvF){
   const pd = [top[1], top[0], top[2]], pc = ['p2','p1','p3'], med = ['🥈','🥇','🥉'], crown = ['','👑',''];
   $('#podium').innerHTML = pd.map((a,i) => a ? `<div class="pd ${pc[i]}"><div class="crown">${crown[i]}</div>${ava(a,'lg')}<div class="nm">${esc(a.name)}</div><div class="sc">Lớp ${esc(a.cls)}</div><div class="bar"><span>${med[i]}</span><b>${a.pts}</b><small>🧠 ${a.mem} thuộc lòng</small></div></div>` : '<div class="pd"></div>').join('');
   $('#topList').innerHTML = top.slice(3).map((a,i) => `<li><span class="rk">${i+4}</span>${stuCell(a, ` · 🧠 ${a.mem} thuộc lòng`)}<span class="sc">${a.pts} <small>điểm</small></span></li>`).join('')
-    || (top.length ? '<li class="muted" style="justify-content:center">Cần thêm học sinh để lấp đầy Top 10</li>' : '<li class="muted">Chưa có em nào viết hết một bài ở tab Luyện viết.</li>');
+    || (top.length ? '<li class="muted" style="justify-content:center">Cần thêm học sinh để lấp đầy Top 10</li>' : '<li class="muted">Chưa có em nào viết hết một bài ở tab Luyện trí nhớ.</li>');
   $('#boardHead').innerHTML = `<tr><th data-s="rank">#</th><th data-s="name">Học sinh</th><th data-s="pts">Điểm</th><th data-s="mem" class="num">🧠 Thuộc lòng</th><th data-s="done" class="num c-avg">Bài đã viết</th><th data-s="avgA" class="num">Chính xác</th><th data-s="n" class="num c-n">Số lượt</th><th data-s="bc">Huy hiệu viết</th><th data-s="last" class="c-last">Lần cuối</th></tr>`;
   const ranked = agg.slice().sort((a,b) => b.pts - a.pts || b.mem - a.mem), rankMap = new Map(ranked.map((a,i) => [a, i+1]));
   const sk = ['pts','mem','done','avgA','n','bc','name','last'].includes(sortKey) ? sortKey : 'pts', maxP = Math.max(1, ...agg.map(a => a.pts));
@@ -2436,7 +2499,7 @@ function renderBoardWrite(cls, q, lvF){
     <td class="num c-n"><b>${a.n}</b></td>
     <td><span class="mb">${a.badges.map(b => `<i title="${esc(b.n)}: ${esc(b.d)}">${b.i}</i>`).join('')}</span>${a.bc ? '' : '<span class="muted">–</span>'}</td>
     <td class="muted c-last" style="white-space:nowrap;font-size:12.5px">${fmtDate(tMs(a.last)).replace(/\/\d{4}/,'')}</td></tr>`; }).join('')
-    || '<tr><td colspan="9" class="muted" style="text-align:center;padding:24px">Chưa có kết quả Luyện viết phù hợp.</td></tr>';
+    || '<tr><td colspan="9" class="muted" style="text-align:center;padding:24px">Chưa có kết quả Luyện trí nhớ phù hợp.</td></tr>';
 }
 function renderBoardBasic(cls, q){
   setBoardLabels(true);
@@ -2637,9 +2700,9 @@ function fillBoardLevels(){
   const el = $('#fLevel'), v = el.value, ids = [...new Set(LEVELS.map(l => l.id).concat(texts.map(t => +t.level || 1)))].filter(n => n >= 3).sort((a, b) => a - b);
   el.innerHTML = '<option value="">Tất cả mức độ</option>' + ids.map(n => `<option value="${n}">${esc(lvLabel(n))}</option>`).join(''); el.value = v;
 }
-const CAT_ICON = {'Ca dao, tục ngữ, lời hay ý đẹp':'🏮','Tri thức ngữ văn':'📖','Khoa học thường thức':'💡','Khoa học tự nhiên':'🔬','Ví dụ Khoa học tự nhiên':'🧪','Đoạn văn hay':'✍️','Thế giới kỳ thú':'🔭','Bài văn hay':'📝','Essay tiếng Anh':'✒️','Kiến thức sơ cấp cứu':'🩹','Lời hay ý đẹp':'🌸','Luyện phím cơ bản':'⌨️'};
+const CAT_ICON = {'Ca dao, tục ngữ, lời hay ý đẹp':'🏮','Tri thức ngữ văn':'📖','Khoa học thường thức':'💡','Khoa học tự nhiên':'🔬','Ví dụ Khoa học tự nhiên':'🧪','Đoạn văn hay':'✍️','Thế giới kỳ thú':'🔭','Bài văn hay':'📝','Essay tiếng Anh':'✒️','Kiến thức sơ cấp cứu':'🩹','Động từ bất quy tắc':'🔁','Lời hay ý đẹp':'🌸','Luyện phím cơ bản':'⌨️'};
 /* Biểu tượng cho chủ đề mới: đoán theo tên, không có thì dùng 📄 */
-const ICON_GUESS = [[/lời hay|danh ngôn/i,'🌸'],[/sơ cứu|sơ cấp cứu|cấp cứu|y tế/i,'🩹'],[/toán/i,'🔢'],[/tiếng anh|english/i,'🔤'],[/lịch sử/i,'🏛️'],[/địa lí|địa lý/i,'🌏'],[/tin học|máy tính/i,'💻'],[/âm nhạc|bài hát/i,'🎵'],[/mĩ thuật|mỹ thuật/i,'🎨'],[/thơ/i,'🪶'],[/truyện|cổ tích/i,'📚'],[/đạo đức|kĩ năng|kỹ năng/i,'🤝'],[/sinh học/i,'🌿'],[/vật lí|vật lý/i,'🧲'],[/hóa học/i,'⚗️'],[/công nghệ/i,'🛠️'],[/an toàn|giao thông/i,'🚦'],[/môi trường/i,'♻️'],[/sức khỏe|dinh dưỡng/i,'🍎'],[/quê hương|du lịch/i,'🗺️'],[/văn|ngữ văn/i,'📜'],[/khoa học/i,'🔍']];
+const ICON_GUESS = [[/bất quy tắc|động từ/i,'🔁'],[/lời hay|danh ngôn/i,'🌸'],[/sơ cứu|sơ cấp cứu|cấp cứu|y tế/i,'🩹'],[/toán/i,'🔢'],[/tiếng anh|english/i,'🔤'],[/lịch sử/i,'🏛️'],[/địa lí|địa lý/i,'🌏'],[/tin học|máy tính/i,'💻'],[/âm nhạc|bài hát/i,'🎵'],[/mĩ thuật|mỹ thuật/i,'🎨'],[/thơ/i,'🪶'],[/truyện|cổ tích/i,'📚'],[/đạo đức|kĩ năng|kỹ năng/i,'🤝'],[/sinh học/i,'🌿'],[/vật lí|vật lý/i,'🧲'],[/hóa học/i,'⚗️'],[/công nghệ/i,'🛠️'],[/an toàn|giao thông/i,'🚦'],[/môi trường/i,'♻️'],[/sức khỏe|dinh dưỡng/i,'🍎'],[/quê hương|du lịch/i,'🗺️'],[/văn|ngữ văn/i,'📜'],[/khoa học/i,'🔍']];
 function catIcon(c){ if (CAT_ICON[c]) return CAT_ICON[c]; const g = ICON_GUESS.find(([re]) => re.test(c||'')); return g ? g[1] : '📄'; }
 const BK = { cat: 'Ca dao, tục ngữ, lời hay ý đẹp',  /* mở Kho là thấy Ca dao, tục ngữ trước */ grade: '', page: 0, per: (() => { const v = +store.get('bankPer', 12); return [12,24,48,96,0].includes(v) ? v : 12; })(), view: store.get('bankView', 'full') };
 const lvName = n => (LEVELS.find(l => l.id === +n) || {name:'Mức ' + n}).name;
@@ -2699,7 +2762,7 @@ function renderBank(){
   $('#bankList').innerHTML = slice.map(t => `<article class="tcard">
       <div><h4>${esc(t.title)}</h4><div class="meta"><span class="lvp">${esc(lvLabel(t.level).replace(' – ', ' · '))}</span>${t._grp ? `<span>🐣 Làm quen · ${esc(t._grp)}</span>` : ''}<span>${tokenize(t.content).length} tiếng</span>${BK.cat ? '' : `<span>${catIcon(t.category)} ${esc(t.category)}</span>`}</div></div>
       <div class="body">${body(t.content)}</div>
-      <div class="acts"><button class="btn sm" data-try="${esc(t.id)}">✍️ Luyện bài này</button><button class="btn sm race" data-race="${esc(t.id)}">🏁 Đua bài này</button>${+t.level >= 3 ? `<button class="btn sm white" data-copy="${esc(t.id)}" title="Luyện viết: nhìn chép hoặc học thuộc rồi viết lại cả bài">📝 Luyện viết</button>` : ''}${bankOpen && !t._grp ? `<button class="btn sm white" data-give="${esc(t.id)}" title="Giao bài này cho học sinh">📌 Giao</button><button class="btn sm white" data-room="${esc(t.id)}" title="Tạo phòng đua với bài này">👥 Phòng đua</button><button class="btn sm white" data-edit="${esc(t.id)}">Sửa</button><button class="btn sm danger" data-del="${esc(t.id)}">Xóa</button>` : ''}</div>
+      <div class="acts"><button class="btn sm" data-try="${esc(t.id)}" title="Luyện gõ bài này">✍️ Luyện gõ</button><button class="btn sm race" data-race="${esc(t.id)}" title="Đua tốc độ với bài này">🏁 Đua</button>${+t.level >= 3 ? `<button class="btn sm white" data-copy="${esc(t.id)}" title="Mở tab Luyện trí nhớ: học thuộc rồi viết lại cả bài">🧠 Thử thách trí nhớ</button>` : ''}${bankOpen && !t._grp ? `<button class="btn sm white" data-give="${esc(t.id)}" title="Giao bài này cho học sinh">📌 Giao</button><button class="btn sm white" data-room="${esc(t.id)}" title="Tạo phòng đua với bài này">👥 Phòng đua</button><button class="btn sm white" data-edit="${esc(t.id)}">Sửa</button><button class="btn sm danger" data-del="${esc(t.id)}">Xóa</button>` : ''}</div>
     </article>`).join('') || '<div class="card muted" style="text-align:center;padding:30px">Không có bài phù hợp.</div>';
   $('#bankCount').textContent = `${T.length} bài luyện gõ · ${cats.length} chủ đề` + (list.length !== T.length ? ` · đang hiện ${list.length} bài` : '');
   let pg = '';
@@ -3366,7 +3429,7 @@ function dueInfo(a){
   const d = new Date(a.due + 'T23:59:59'), left = Math.ceil((d - Date.now()) / 864e5), s = d.toLocaleDateString('vi-VN');
   return left < 0 ? `<span class="due late">⏰ Đã hết hạn ${s}</span>` : `<span class="due ${left <= 1 ? 'soon' : ''}">⏰ Hạn ${s}${left <= 1 ? ' (sắp hết hạn)' : ''}</span>`;
 }
-const modeLabel = m => m === 'race' ? '🏁 Đua' : m === 'both' ? '✍️ Luyện gõ + 🏁 Đua' : m === 'see' ? '📝 Luyện viết · Nhìn chép' : m === 'mem' ? '🧠 Luyện viết · Thuộc chép' : '✍️ Luyện gõ';
+const modeLabel = m => m === 'race' ? '🏁 Đua' : m === 'both' ? '✍️ Luyện gõ + 🏁 Đua' : m === 'see' ? '🧠 Luyện trí nhớ · Nhìn chép' : m === 'mem' ? '🧠 Luyện trí nhớ · Thuộc chép' : '✍️ Luyện gõ';
 function updateAsBadge(){
   const b = $('#asBadge'); if (!b) return;
   const rows = myHistory(), left = AS.list.filter(isForMe).filter(a => { const p = asProgress(rows, a); return p.d < p.n; }).length;
@@ -3874,7 +3937,7 @@ function osImeCheck(e){
 /* Bài mẫu hiện đầy đủ một bên, bên kia là khung gõ rộng giữ nguyên mọi đoạn đã chép — giúp em nắm mạch cả bài */
 const CP = { text: null, words: [], raw: '', started: false, finished: false, t0: 0, tick: null, els: [], cls: [], res: [], done: 0,
   mode: store.get('cpMode', 'see') === 'mem' ? 'mem' : 'see', phase: 'write', peeks: 0, peekOn: false };
-/* Hai cách luyện viết: 👀 Nhìn chép (bài mẫu hiện rõ) và 🧠 Thuộc chép (học thuộc → bài mẫu bị che mờ → tự viết lại, đếm số lần xem lại) */
+/* Hai cách luyện trí nhớ: 👀 Nhìn chép (bài mẫu hiện rõ) và 🧠 Thuộc chép (học thuộc → bài mẫu bị che mờ → tự viết lại, đếm số lần xem lại) */
 function cpApply(){
   const tab = $('#tab-copy'), mem = CP.mode === 'mem';
   tab.classList.toggle('mem', mem);
@@ -3892,10 +3955,42 @@ function cpApply(){
 }
 function cpPeekSet(on){ if (CP.mode !== 'mem' || CP.phase !== 'write') return; if (on && !CP.peekOn) CP.peeks++; CP.peekOn = on; cpApply(); cpUpdate(); }
 const cpIn = $('#cpIn');
-const cpPool = () => { const c = $('#cpCat').value, lv = $('#cpLv').value;
-  return texts.filter(t => +t.level >= 3 && (!c || t.category === c) && (lv === '45' ? +t.level >= 4 : lv === '0' ? true : +t.level === +lv)); };
+const cpPool = () => { const c = $('#cpCat').value, lv = $('#cpLv').value, g = $('#cpGr').style.display === 'none' ? '' : $('#cpGr').value;
+  return texts.filter(t => +t.level >= 3 && (!c || t.category === c) && (!g || gradeOf(t) === g) && (lv === '45' ? +t.level >= 4 : lv === '0' ? true : +t.level === +lv)); };
+/* Luyện trí nhớ ưu tiên ngữ liệu tiếng Anh, rồi đến Khoa học tự nhiên */
+/* 👀 Nhìn chép: tiếng Anh và bài dài lên trước · 🧠 Thuộc chép: Khoa học tự nhiên (lớp 7) lên trước */
+const cpRank = c => {
+  const en = c === 'Essay tiếng Anh' ? 0 : c === 'Động từ bất quy tắc' ? 1 : /tiếng anh|english/i.test(c) ? 2 : -1;
+  const sci = c === 'Khoa học tự nhiên' ? 0 : c === 'Ví dụ Khoa học tự nhiên' ? 1 : -1;
+  if (CP.mode === 'see') return en >= 0 ? en : sci >= 0 ? 3 + sci : 10;
+  return sci >= 0 ? sci : en >= 0 ? 2 + en : 10;
+};
+const cpCats = () => allCats().filter(c => texts.some(t => t.category === c && +t.level >= 3)).map((c, i) => [c, i]).sort((a, b) => cpRank(a[0]) - cpRank(b[0]) || a[1] - b[1]).map(x => x[0]);
+function cpDefaults(mode){
+  if (CP.started && !CP.finished) return;            /* đang viết dở thì giữ nguyên */
+  CP.mode = mode === 'see' ? 'see' : 'mem'; store.set('cpMode', CP.mode);
+  const first = cpCats().find(c => cpRank(c) < 10) || '';
+  const hasLong = first && texts.some(t => t.category === first && +t.level >= 5);
+  cpFill(); $('#cpCat').value = first; $('#cpLv').value = CP.mode === 'see' && hasLong ? '5' : '0';
+  cpGrades(CP.mode === 'mem' ? '7' : ''); CP.text = null; cpFill(); cpAttn();
+}
+/* Ô chọn lớp cho chủ đề theo lớp (ví dụ Khoa học tự nhiên lớp 7) */
+function cpGrades(prefer){
+  const c = $('#cpCat').value, gs = isGradedCat(c) ? gradesIn(texts.filter(t => t.category === c && +t.level >= 3)) : [], el = $('#cpGr'), cur = el.value;
+  el.style.display = gs.length ? '' : 'none';
+  el.innerHTML = '<option value="">Tất cả lớp</option>' + gs.map(g => `<option value="${g}">Lớp ${g}</option>`).join('');
+  const want = prefer !== undefined ? prefer : cur;
+  el.value = gs.includes(want) ? want : gs.includes(myGrade()) ? myGrade() : '';
+}
+/* Nhấp nháy phần hướng dẫn quan trọng khi vừa mở tab để học sinh thấy ngay */
+function cpAttn(){
+  const els = CP.mode === 'mem' && CP.phase === 'learn' ? ['#cpStartWrite', '#cpLegend', '#cpHint'] : ['#cpLegend', '#cpHint', '#cpMode'];
+  $$('.cp-attn').forEach(e => e.classList.remove('cp-attn'));
+  requestAnimationFrame(() => els.forEach(sel => { const e = $(sel); if (e){ void e.offsetWidth; e.classList.add('cp-attn'); } }));
+  clearTimeout(cpAttn.t); cpAttn.t = setTimeout(() => $$('.cp-attn').forEach(e => e.classList.remove('cp-attn')), 6500);
+}
 function cpFill(keep){
-  const cats = allCats().filter(c => texts.some(t => t.category === c && +t.level >= 3)), cs = $('#cpCat'), cv = cs.value;
+  const cats = cpCats(), cs = $('#cpCat'), cv = cs.value;
   cs.innerHTML = '<option value="">🌈 Tất cả chủ đề</option>' + cats.map(c => `<option value="${esc(c)}">${catIcon(c)} ${esc(c)}</option>`).join('');
   cs.value = cats.includes(cv) ? cv : '';
   const list = cpPool(), sel = $('#cpSel');
@@ -3922,14 +4017,14 @@ function cpReset(){
 function cpNext(){ const list = cpPool().filter(t => !CP.text || t.id !== CP.text.id); if (!list.length) return cpReset(); const t = list[Math.floor(Math.random() * list.length)]; $('#cpSel').value = t.id; cpLoad(t.id); cpIn.focus(); }
 function cpOpen(id, mode){
   const t = texts.find(x => x.id === id); if (!t) return;
-  if (mode === 'see' || mode === 'mem'){ CP.mode = mode; store.set('cpMode', mode); }
-  $('#cpCat').value = t.category; $('#cpLv').value = +t.level >= 4 ? '45' : '0';
+  CP.mode = mode === 'see' ? 'see' : 'mem'; store.set('cpMode', CP.mode);   /* mở từ Kho: mặc định Thuộc chép */
+  $('#cpCat').value = t.category; $('#cpLv').value = '0'; cpGrades(gradeOf(t));
   showTab('copy'); cpFill(id); if ($('#cpSel').value !== id){ $('#cpLv').value = '0'; cpFill(id); }
-  cpLoad(id);
+  cpLoad(id); cpAttn();
 }
 const cpEn = () => isEnWords(CP.words);
 const cpTarget = before => (CP.words[before.split(/\s+/).filter(Boolean).length] || {}).w;
-function cpSame(t, g, en){ const v = en ? enFix(t, g) : t; return canon(v, false) === canon(g, false); }
+function cpSame(t, g, en){ const v = enFix(t, g); return canon(v, false) === canon(g, false); }
 function cpElapsed(){ return CP.started ? (performance.now() - CP.t0) / 1000 : 0; }
 function cpCalc(){
   const sec = cpElapsed(), n = Math.min(CP.done, CP.words.length), correct = CP.res.slice(0, n).filter(Boolean).length;
@@ -4014,25 +4109,25 @@ function cpFinish(){
   if (mem && writeFull(rec)){
     const t = memTier(c.acc, CP.peeks);
     rt.className = 'memtier ' + t.c; rt.style.display = '';
-    rt.innerHTML = `<span class="mt-ic">${t.i}</span><span class="mt-n">${t.n}${CP.peeks === 0 ? ' · THUỘC LÒNG!' : ''}</span><span class="mt-p">+${pts} điểm Luyện viết · nhân ×${t.x}${c.acc >= 95 ? ' · thưởng chính xác ×1.2' : ''}</span>`
+    rt.innerHTML = `<span class="mt-ic">${t.i}</span><span class="mt-n">${t.n}${CP.peeks === 0 ? ' · THUỘC LÒNG!' : ''}</span><span class="mt-p">+${pts} điểm trí nhớ · nhân ×${t.x}${c.acc >= 95 ? ' · thưởng chính xác ×1.2' : ''}</span>`
       + `<small>${CP.peeks === 0 ? (t.x >= 4 ? 'Không xem lại lần nào và gần như không sai — mức thưởng cao nhất!' : 'Không xem lại lần nào! Viết chính xác từ 98% sẽ lên Kim cương, nhân ×4.') : `Xem lại ${CP.peeks} lần. Không xem lần nào sẽ được nhân ×${c.acc >= 98 ? 4 : 3}!`}${pts > prevBest && prevBest > 0 ? ' 🎉 Kỷ lục mới cho bài này!' : ''}</small>`;
     if (CP.peeks === 0){ setTimeout(confetti, 350); setTimeout(confetti, 900); setTimeout(fanfare, 700); }
   } else if (pts){
     rt.className = 'memtier'; rt.style.display = '';
-    rt.innerHTML = `<span class="mt-p">+${pts} điểm Luyện viết${c.acc >= 95 ? ' · thưởng chính xác ×1.2' : ''}</span><small>Thử 🧠 Thuộc chép bài này: không xem lại được nhân điểm đến ×4!${pts > prevBest && prevBest > 0 ? ' · 🎉 Kỷ lục mới cho bài này!' : ''}</small>`;
+    rt.innerHTML = `<span class="mt-p">+${pts} điểm trí nhớ${c.acc >= 95 ? ' · thưởng chính xác ×1.2' : ''}</span><small>Thử 🧠 Thuộc chép bài này: không xem lại được nhân điểm đến ×4!${pts > prevBest && prevBest > 0 ? ' · 🎉 Kỷ lục mới cho bài này!' : ''}</small>`;
   } else if (!writeFull(rec)){
     rt.className = 'memtier'; rt.style.display = '';
-    rt.innerHTML = `<small>Viết hết bài với độ chính xác từ 80% để được tính điểm Luyện viết và lên Bảng xếp hạng.</small>`;
+    rt.innerHTML = `<small>Viết hết bài với độ chính xác từ 80% để được tính điểm trí nhớ và lên Bảng xếp hạng.</small>`;
   }
   if (!student){ $('#resSync').textContent = 'Em chưa nhập tên nên kết quả không được lưu.'; return; }
   saveResult({ time: new Date().toISOString(), name: student.name, icon: student.icon || '', cls: student.cls,
     level: lvId, title: CP.text.title, category: CP.text.category, wpm: r1(c.wpm), accuracy: r1(c.acc), correct: c.correct, typed: c.typed,
     total: N, seconds: r1(c.sec), mode: mem ? `Thuộc chép – xem lại ${CP.peeks} lần` : 'Nhìn chép', ime: settings.builtin ? 'Telex tích hợp' : 'Bộ gõ máy' });
 }
-$$('#cpMode button').forEach(b => b.onclick = () => { if (CP.mode === b.dataset.m) return; CP.mode = b.dataset.m; store.set('cpMode', CP.mode); cpReset(); if (CP.mode === 'see') cpIn.focus(); });
+$$('#cpMode button').forEach(b => b.onclick = () => { if (CP.mode === b.dataset.m) return; if (CP.started && !CP.finished){ CP.mode = b.dataset.m; store.set('cpMode', CP.mode); cpReset(); } else cpDefaults(b.dataset.m); if (CP.mode === 'see') cpIn.focus(); });
 $('#cpStartWrite').onclick = () => { CP.phase = 'write'; CP.peekOn = false; cpApply(); cpUpdate(); cpIn.focus(); };
 $('#cpPeek').onclick = () => { cpPeekSet(!CP.peekOn); cpIn.focus(); };
-$('#cpCat').onchange = () => cpFill(); $('#cpLv').onchange = () => cpFill();
+$('#cpCat').onchange = () => { cpGrades(); cpFill(); }; $('#cpGr').onchange = () => cpFill(); $('#cpLv').onchange = () => cpFill();
 $('#cpSel').onchange = e => { cpLoad(e.target.value); cpIn.focus(); };
 $('#cpRand').onclick = cpNext; $('#cpReset').onclick = () => { cpReset(); cpIn.focus(); };
 $('#cpDone').onclick = () => { if (!cpIn.value.trim()) return toast(CP.mode === 'mem' && CP.phase === 'learn' ? 'Em hãy học thuộc rồi bấm “Đã thuộc, bắt đầu viết” trước nhé.' : 'Em chưa gõ chữ nào — hãy viết vài chữ rồi mới nộp bài nhé.'); CP.done = Math.max(CP.done, cpIn.value.split(/\s+/).filter(Boolean).length); cpFinish(); };
