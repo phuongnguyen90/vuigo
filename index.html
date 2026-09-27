@@ -1244,7 +1244,7 @@ const LEVELS = [
   {id:4, icon:'🦋', name:'Đoạn ngắn', desc:'Vài câu liền nhau', target:18},
   {id:5, icon:'🚀', name:'Đoạn dài', desc:'Nhiều câu, chữ hoa, dấu câu', target:22}
 ];
-const CATS = ['Luyện phím cơ bản','Ca dao, tục ngữ, thành ngữ, lời hay ý đẹp','Tri thức ngữ văn','Khoa học thường thức','Thế giới kỳ thú','Đoạn văn hay','Khoa học tự nhiên','Ví dụ Khoa học tự nhiên','Bài văn hay'];
+const CATS = ['Ca dao, tục ngữ, thành ngữ, lời hay ý đẹp','Luyện phím cơ bản','Tri thức ngữ văn','Khoa học thường thức','Thế giới kỳ thú','Đoạn văn hay','Khoa học tự nhiên','Ví dụ Khoa học tự nhiên','Bài văn hay'];
 /* Chủ đề chia theo lớp: tiêu đề bài bắt đầu bằng “Lớp N · …” */
 const GRADED_CATS = ['Khoa học tự nhiên','Ví dụ Khoa học tự nhiên','Bài văn hay'];
 const CAT_MAP = {'Chữ cái':'Luyện phím cơ bản','Từ ngữ':'Luyện phím cơ bản','Từ đơn':'Luyện phím cơ bản','Từ ghép':'Luyện phím cơ bản',
@@ -2417,7 +2417,7 @@ const CAT_ICON = {'Ca dao, tục ngữ, thành ngữ, lời hay ý đẹp':'🏮
 /* Biểu tượng cho chủ đề mới: đoán theo tên, không có thì dùng 📄 */
 const ICON_GUESS = [[/toán/i,'🔢'],[/tiếng anh|english/i,'🔤'],[/lịch sử/i,'🏛️'],[/địa lí|địa lý/i,'🌏'],[/tin học|máy tính/i,'💻'],[/âm nhạc|bài hát/i,'🎵'],[/mĩ thuật|mỹ thuật/i,'🎨'],[/thơ/i,'🪶'],[/truyện|cổ tích/i,'📚'],[/đạo đức|kĩ năng|kỹ năng/i,'🤝'],[/sinh học/i,'🌿'],[/vật lí|vật lý/i,'🧲'],[/hóa học/i,'⚗️'],[/công nghệ/i,'🛠️'],[/an toàn|giao thông/i,'🚦'],[/môi trường/i,'♻️'],[/sức khỏe|dinh dưỡng/i,'🍎'],[/quê hương|du lịch/i,'🗺️'],[/văn|ngữ văn/i,'📜'],[/khoa học/i,'🔍']];
 function catIcon(c){ if (CAT_ICON[c]) return CAT_ICON[c]; const g = ICON_GUESS.find(([re]) => re.test(c||'')); return g ? g[1] : '📄'; }
-const BK = { cat: '', grade: '', page: 0, per: (() => { const v = +store.get('bankPer', 12); return [12,24,48,96,0].includes(v) ? v : 12; })(), view: store.get('bankView', 'full') };
+const BK = { cat: 'Ca dao, tục ngữ, thành ngữ, lời hay ý đẹp',  /* mở Kho là thấy Ca dao, tục ngữ trước */ grade: '', page: 0, per: (() => { const v = +store.get('bankPer', 12); return [12,24,48,96,0].includes(v) ? v : 12; })(), view: store.get('bankView', 'full') };
 const lvName = n => (LEVELS.find(l => l.id === +n) || {name:'Mức ' + n}).name;
 const lvLabel = n => { const l = LEVELS.find(x => x.id === (+n || 1)); return 'Mức ' + (+n || 1) + (l ? ' – ' + l.name : ''); };
 /* Kho = bài trong cơ sở dữ liệu + các bài của tab Làm quen (mức 1–2), tự cập nhật khi có thêm ngữ liệu */
